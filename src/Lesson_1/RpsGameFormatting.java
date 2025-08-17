@@ -3,37 +3,35 @@ package Lesson_1;
 import java.util.Random;
 
 public class RpsGameFormatting {
+    private static final String ROCK = "✊";
+    private static final String SCISSORS = "✌️";
+    private static final String PAPER = "✋";
+
     // Игра Камень-Ножницы-Бумага
     public static void main(String[] args) throws InterruptedException {
-        String rock ="✊";
-        String scissors= "✌\uFE0F";
-        String paper = "✋" ;
-
 
         // Ход первого игрока
-        String name1  = "HEL";
-        Random r = new Random( );
-        int position1 = r.nextInt( 1, 100 );
-        String sign1 = rock;
+        String name1 = "HEL";
+        Random r = new Random();
+        int position1 = r.nextInt(1, 100);
+        String sign1 = ROCK;
 
 
         if (position1 > 66) {
-            sign1 = paper;
+            sign1 = PAPER;
+        } else if (position1 > 33) {
+            sign1 = SCISSORS;
         }
-        else if (position1 > 33) {
-            sign1 = scissors;
-        }
 
 
-        System.out.println("Ход "+name1+ ": ");
+        System.out.println("Ход " + name1 + ": ");
 
-        for (int i = 0; i<5; i ++)
-        {
-            System.out.print (rock + "\r") ;
+        for (int i = 0; i < 5; i++) {
+            System.out.print(ROCK + "\r");
             Thread.sleep(100);
-            System.out.print (scissors + "\r" );
+            System.out.print(SCISSORS + "\r");
             Thread.sleep(100);
-            System.out.print (paper + "\r");
+            System.out.print(PAPER + "\r");
             Thread.sleep(100);
         }
 
@@ -42,46 +40,45 @@ public class RpsGameFormatting {
 
         // Ход второго игрока
         String name2 = "WALLE";
-        int position2 = r.nextInt (1,100);
-        String sign2 = rock;
+        int position2 = r.nextInt(1, 100);
+        String sign2 = ROCK;
 
 
         if (position2 > 66) {
-            sign2 = paper;
+            sign2 = PAPER;
         } else {
             if (position2 > 33) {
-                sign2 = scissors;
+                sign2 = SCISSORS;
             }
         }
 
-        System.out.println("Ход " +name2 +": ");
+        System.out.println("Ход " + name2 + ": ");
 
-        for (int i = 0 ; i < 5 ; i ++) {
-            System.out.print(rock + "\r");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(ROCK + "\r");
             Thread.sleep(100);
-            System.out.print( scissors + "\r" );
+            System.out.print(SCISSORS + "\r");
             Thread.sleep(100);
-            System.out.print ( paper + "\r");
+            System.out.print(PAPER + "\r");
             Thread.sleep(100);
         }
 
-        System.out.println (sign2);
+        System.out.println(sign2);
 
 
-        if (sign1.equals( sign2 ))
-        {
-            System.out.println("Победила дружба!") ;
+        if (sign1.equals(sign2)) {
+            System.out.println("Победила дружба!");
             return;
         }
 
 
-        boolean isEqualName1 = sign1.equals(rock) && sign2.equals(scissors) ||
-                sign1.equals(scissors) && sign2.equals(paper) ||
-                sign1.equals(paper) && sign2.equals(rock);
+        boolean isEqualName1 = sign1.equals(ROCK) && sign2.equals(SCISSORS) ||
+                sign1.equals(SCISSORS) && sign2.equals(PAPER) ||
+                sign1.equals(PAPER) && sign2.equals(ROCK);
 
         if (isEqualName1) {
             System.out.println("\nПобедил - " + name1);
-        }   else {
+        } else {
             System.out.println("\nПобедил - " + name2);
         }
     }
